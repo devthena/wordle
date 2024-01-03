@@ -1,11 +1,9 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
+import { Auth, Footer, Game, Loading } from './components';
+
 import styles from './app.module.scss';
-
-import { Footer, Loading } from './components';
-
-import { Auth, Landing } from './pages';
 
 const App = () => {
   const { isAuthenticated, isLoading, user } = useAuth0();
@@ -17,7 +15,7 @@ const App = () => {
           isLoading ? (
             <Loading />
           ) : (
-            <Landing data={user} />
+            <Game data={user} />
           )
         ) : (
           <Auth />

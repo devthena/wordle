@@ -1,5 +1,5 @@
+import { LoginButton } from './components';
 import styles from './index.module.scss';
-import { LoginButton } from '../../components';
 
 const Auth = () => {
   return (

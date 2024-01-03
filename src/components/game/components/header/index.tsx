@@ -1,5 +1,5 @@
-import styles from './index.module.scss';
 import LogoutButton from '../logout-button';
+import styles from './index.module.scss';
 
 const Header = () => {
   return (
