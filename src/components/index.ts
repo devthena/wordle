@@ -1,6 +1,8 @@
-import Auth from './auth';
 import Footer from './footer';
-import Game from './game';
+import Header from './header';
+import Keyboard from './keyboard';
 import Loading from './loading';
+import LoginButton from './login-button';
+import LogoutButton from './logout-button';
 
-export { Auth, Footer, Game, Loading };
+export { Footer, Header, Keyboard, Loading, LoginButton, LogoutButton };
