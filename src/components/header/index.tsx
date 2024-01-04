@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 const Header = ({ username }: HeaderProps) => {
   return (
-    <header className={styles.bar}>
+    <header className={styles.container}>
       {username && <span className={styles.greeting}>Hi, {username}!</span>}
       <LogoutButton />
     </header>

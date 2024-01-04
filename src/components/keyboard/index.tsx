@@ -35,15 +35,13 @@ const Keyboard = () => {
 
   return (
     <div className={styles.container}>
-      {keyIds.map((row, i) => {
-        return (
-          <div className={styles.row} key={i}>
-            {row.map(id => {
-              return <KeyTile id={id} key={id} />;
-            })}
-          </div>
-        );
-      })}
+      {keyIds.map((row, i) => (
+        <div className={styles.row} key={i}>
+          {row.map(id => (
+            <KeyTile id={id} key={id} />
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

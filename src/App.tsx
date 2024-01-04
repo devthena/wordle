@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { Footer, Header, Keyboard, Loading, LoginButton } from './components';
+import {
+  AnswerGrid,
+  Footer,
+  Header,
+  Keyboard,
+  Loading,
+  LoginButton,
+} from './components';
 
 import { GameStatus } from './constants/enums';
 
@@ -40,11 +47,9 @@ const App = () => {
               )}
               {status === GameStatus.SoloStart && (
                 <div>
-                  <h3>Wordle</h3>
-                  <div>Board Grid</div>
-                  <div>
-                    <Keyboard />
-                  </div>
+                  <h1>Wordle</h1>
+                  <AnswerGrid />
+                  <Keyboard />
                 </div>
               )}
             </div>

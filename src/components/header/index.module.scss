@@ -1,6 +1,11 @@
-.bar {
+.container {
+  display: none;
   padding: 10px;
   text-align: right;
+
+  @media screen and (min-width: 480px) {
+    display: block;
+  }
 }
 
 .greeting {
