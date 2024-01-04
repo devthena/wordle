@@ -1,10 +1,28 @@
-.container {
-  padding: 0 10px;
+.backspace {
+  padding-top: 5px;
+
+  & > svg {
+    height: 20px;
+    width: 20px;
+  }
 }
 
-.keyTile {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 5px 10px;
-  text-transform: capitalize;
+.container {
+  padding: 0 5px;
+}
+
+.row {
+  display: flex;
+  height: 35px;
+  padding: 2px 0;
+
+  & > button {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    flex-grow: 1;
+    font-weight: 500;
+    margin-left: 1px;
+    margin-right: 1px;
+    text-transform: capitalize;
+  }
 }

@@ -1,21 +1,31 @@
 import { useEffect } from 'react';
+
+import { BackspaceIcon } from '../../constants/icons';
+import { KeyTileProps } from '../../constants/types';
+
 import styles from './index.module.scss';
 
-const row1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o'];
-const row2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
-const row3 = ['enter', 'z', 'x', 'c', ' v', 'b', 'n', 'm', 'delete'];
+const keyIds = [
+  ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+  ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+  ['Enter', 'z', 'x', 'c', ' v', 'b', 'n', 'm', 'Backspace'],
+];
 
-type KeyType = {
-  id: string;
-};
-
-const KeyTile = ({ id }: KeyType) => {
-  return <div className={styles.keyTile}>{id}</div>;
+const KeyTile = ({ id }: KeyTileProps) => {
+  const isBackspace = id === 'Backspace';
+  return (
+    <button className={isBackspace ? styles.backspace : undefined}>
+      {isBackspace ? <BackspaceIcon /> : id}
+    </button>
+  );
 };
 
 const Keyboard = () => {
   const handleKeyUp = (evt: KeyboardEvent) => {
-    console.log('keyup event', evt.key);
+    const allKeyIds = keyIds.flat();
+    if (allKeyIds.includes(evt.key)) {
+      console.log('keyup event id match', evt.key);
+    }
   };
 
   useEffect(() => {
@@ -25,21 +35,15 @@ const Keyboard = () => {
 
   return (
     <div className={styles.container}>
-      <div>
-        {row1.map(id => {
-          return <KeyTile id={id} key={id} />;
-        })}
-      </div>
-      <div>
-        {row2.map(id => {
-          return <KeyTile id={id} key={id} />;
-        })}
-      </div>
-      <div>
-        {row3.map(id => {
-          return <KeyTile id={id} key={id} />;
-        })}
-      </div>
+      {keyIds.map((row, i) => {
+        return (
+          <div className={styles.row} key={i}>
+            {row.map(id => {
+              return <KeyTile id={id} key={id} />;
+            })}
+          </div>
+        );
+      })}
     </div>
   );
 };
