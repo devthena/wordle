@@ -19,9 +19,7 @@ const App = () => {
             <Loading />
           ) : (
             <div>
-              <Header
-                username={user?.nickname || user?.name || user?.email || ''}
-              />
+              <Header username={user?.nickname || user?.name || user?.email} />
               <div className={styles.content}>
                 {status === GameStatus.ModePick && (
                   <div>

@@ -1,3 +1,3 @@
 export type HeaderProps = {
-  username: string;
+  username: string | undefined;
 };
