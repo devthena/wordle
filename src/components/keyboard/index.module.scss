@@ -8,21 +8,42 @@
 }
 
 .container {
+  margin: 0 auto;
+  max-width: 400px;
   padding: 0 5px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 500px;
+  }
 }
 
 .row {
   display: flex;
   height: 35px;
-  padding: 2px 0;
+  padding: 1px 0;
+
+  @media screen and (min-width: 768px) {
+    height: 46px;
+    padding: 2px 0;
+  }
 
   & > button {
     border: 1px solid #ccc;
     cursor: pointer;
     flex-grow: 1;
     font-weight: 500;
-    margin-left: 1px;
     margin-right: 1px;
+    min-width: 30px;
     text-transform: capitalize;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      margin-right: 4px;
+      min-width: 46px;
+    }
+  }
+
+  & > button:last-child {
+    margin-right: 0;
   }
 }
