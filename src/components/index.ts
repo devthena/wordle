@@ -5,6 +5,7 @@ import Keyboard from './keyboard';
 import Loading from './loading';
 import LoginButton from './login-button';
 import LogoutButton from './logout-button';
+import Wordle from './wordle';
 
 export {
   AnswerGrid,
@@ -14,4 +15,5 @@ export {
   Loading,
   LoginButton,
   LogoutButton,
+  Wordle,
 };

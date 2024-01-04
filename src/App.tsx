@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import {
-  AnswerGrid,
-  Footer,
-  Header,
-  Keyboard,
-  Loading,
-  LoginButton,
-} from './components';
+import { Footer, Header, Loading, LoginButton, Wordle } from './components';
 
 import { GameStatus } from './constants/enums';
 
@@ -45,13 +38,7 @@ const App = () => {
                   </div>
                 </div>
               )}
-              {status === GameStatus.SoloStart && (
-                <div>
-                  <h1>Wordle</h1>
-                  <AnswerGrid />
-                  <Keyboard />
-                </div>
-              )}
+              {status === GameStatus.SoloStart && <Wordle />}
             </div>
           </div>
         )}

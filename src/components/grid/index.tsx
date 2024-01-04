@@ -1,18 +1,7 @@
-import { useState } from 'react';
-
+import { AnswerGridProps } from '../../constants/types';
 import styles from './index.module.scss';
 
-const AnswerGrid = () => {
-  const attempts = 1;
-  const [guesses, setGuesses] = useState({
-    1: Array(5).fill(''),
-    2: Array(5).fill(''),
-    3: Array(5).fill(''),
-    4: Array(5).fill(''),
-    5: Array(5).fill(''),
-    6: Array(5).fill(''),
-  });
-
+const AnswerGrid = ({ guesses }: AnswerGridProps) => {
   return (
     <div className={styles.grid}>
       {Object.values(guesses).map((guess, i) => (
