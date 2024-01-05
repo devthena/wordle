@@ -1,5 +1,8 @@
 .grid {
+  color: #353839;
   display: grid;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 3px;
   height: 300px;
@@ -16,10 +19,9 @@
 
 .letter {
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   display: inline-flex;
   font-size: 26px;
-  font-weight: 600;
   justify-content: center;
   text-transform: uppercase;
   user-select: none;
@@ -38,4 +40,20 @@
   @media screen and (min-width: 768px) {
     grid-gap: 5px;
   }
+}
+
+.guessing {
+  border: 1px solid #888888;
+}
+.green {
+  background-color: #6aaa64;
+  color: #ffffff;
+}
+.grey {
+  background-color: #787c7e;
+  color: #ffffff;
+}
+.yellow {
+  background-color: #d2b55b;
+  color: #ffffff;
 }

@@ -32,10 +32,12 @@
   }
 
   & > button {
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
+    color: #353839;
     cursor: pointer;
     flex-grow: 1;
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     margin-right: 1px;
     min-width: 30px;
     text-transform: capitalize;

@@ -1,4 +1,5 @@
 export type AnswerGridProps = {
+  colors: GuessesObject;
   guesses: GuessesObject;
 };
 
@@ -17,4 +18,8 @@ export type KeyboardProps = {
 
 export type KeyTileProps = {
   id: string;
+};
+
+export type WordleProps = {
+  answer: string;
 };

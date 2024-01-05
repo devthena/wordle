@@ -8,20 +8,25 @@ import { GameStatus } from './constants/enums';
 import styles from './app.module.scss';
 
 const App = () => {
+  // @todo: generate an answer from a list of words
+  const answer = 'align';
+
   const { isAuthenticated, isLoading, user } = useAuth0();
-  const [status, setStatus] = useState(GameStatus.ModePick);
+
+  // @todo: switch initial value to ModePick once rooms are supported
+  const [status, setStatus] = useState(GameStatus.SoloStart);
 
   return (
     <main className={styles.app}>
       <div className={styles.page}>
-        {!isAuthenticated && (
+        {isLoading && <Loading />}
+        {!isAuthenticated && !isLoading && (
           <div className={styles.auth}>
             <h1>Hello.</h1>
             <LoginButton />
           </div>
         )}
-        {isAuthenticated && isLoading && <Loading />}
-        {isAuthenticated && (
+        {isAuthenticated && !isLoading && (
           <div>
             <Header username={user?.nickname || user?.name || user?.email} />
             <div className={styles.content}>
@@ -38,7 +43,7 @@ const App = () => {
                   </div>
                 </div>
               )}
-              {status === GameStatus.SoloStart && <Wordle />}
+              {status === GameStatus.SoloStart && <Wordle answer={answer} />}
             </div>
           </div>
         )}
