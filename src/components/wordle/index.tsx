@@ -10,15 +10,18 @@ const Wordle = () => {
   const { guesses, handleKeyUp, keyIds } = useWordle();
 
   useEffect(() => {
-    window.addEventListener('keyup', handleKeyUp, true);
-    return window.removeEventListener('keyup', handleKeyUp);
+    const keyUpHandler = (evt: KeyboardEvent) => {
+      handleKeyUp(evt.key);
+    };
+    window.addEventListener('keyup', keyUpHandler, true);
+    return window.removeEventListener('keyup', keyUpHandler);
   }, []);
 
   return (
     <div className={styles.container}>
       <h1>Wordle</h1>
       <AnswerGrid guesses={guesses} />
-      <Keyboard keys={keyIds} />
+      <Keyboard onKeyUp={handleKeyUp} keys={keyIds} />
     </div>
   );
 };

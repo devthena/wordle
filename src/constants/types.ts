@@ -11,6 +11,7 @@ export type HeaderProps = {
 };
 
 export type KeyboardProps = {
+  onKeyUp: Function;
   keys: string[][];
 };
 

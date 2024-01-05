@@ -13,14 +13,12 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Auth0Provider
-      domain={AUTH0_DOMAIN}
-      clientId={AUTH0_CLIENT_ID}
-      authorizationParams={{
-        redirect_uri: window.location.origin,
-      }}>
-      <App />
-    </Auth0Provider>
-  </React.StrictMode>
+  <Auth0Provider
+    domain={AUTH0_DOMAIN}
+    clientId={AUTH0_CLIENT_ID}
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}>
+    <App />
+  </Auth0Provider>
 );

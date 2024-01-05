@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GuessesObject } from '../constants/types';
 
 const useWordle = () => {
-  let letterIndex = 0;
-  let turn = 1;
+  const guessRef = useRef('');
+  const [currentGuess, setCurrentGuess] = useState<string>('');
+  const [turn, setTurn] = useState<number>(1);
 
   const [guesses, setGuesses] = useState<GuessesObject>({
     1: Array(5).fill(''),
@@ -17,65 +18,56 @@ const useWordle = () => {
   const keyIds = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-    ['Enter', 'z', 'x', 'c', ' v', 'b', 'n', 'm', 'Backspace'],
+    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Backspace'],
   ];
 
-  const addLetter = (key: string) => {
-    const _letterIndex = letterIndex;
+  useEffect(() => {
+    if (turn > 6) return;
 
-    if (letterIndex < 5) {
-      setGuesses(prev => {
-        const updatedGuesses = { ...prev };
-        updatedGuesses[turn][_letterIndex] = key;
-        return updatedGuesses;
-      });
+    guessRef.current = currentGuess;
 
-      letterIndex = _letterIndex + 1;
-    }
-  };
+    const guessArray = currentGuess.split('');
+    const newGuessArray = Array(5).fill('');
 
-  const removeLetter = () => {
-    const _letterIndex = letterIndex;
+    newGuessArray.splice(0, guessArray.length, ...guessArray);
 
-    if (letterIndex !== 0) {
-      setGuesses(prev => {
-        const updatedGuesses = { ...prev };
-        updatedGuesses[turn][_letterIndex - 1] = '';
-        return updatedGuesses;
-      });
-
-      letterIndex = _letterIndex - 1;
-    }
-  };
+    setGuesses(prev => {
+      const updatedGuesses = { ...prev };
+      updatedGuesses[turn].splice(0, newGuessArray.length, ...newGuessArray);
+      return updatedGuesses;
+    });
+  }, [currentGuess, turn]);
 
   const submit = () => {
     // @todo: match the guess if it's an actual word
-    const isGuessValid = guesses[turn].length === 5;
+    const isGuessValid = guessRef.current.length === 5;
     const isTurnValid = turn <= 6;
 
     if (isGuessValid && isTurnValid) {
       // @todo:
       // - add colors to mark the letters and keys
       // - check if the guess is correct or if the game is over
-      turn = turn + 1;
-      letterIndex = 0;
+      setTurn(prev => prev + 1);
+      setCurrentGuess('');
+      guessRef.current = '';
     }
   };
 
-  const keyPress = (key: string) => {
+  const handleKeyUp = (key: string) => {
+    const allKeyIds = keyIds.flat();
+
+    if (!allKeyIds.includes(key)) return;
+
     if (key === 'Backspace') {
-      removeLetter();
+      if (guessRef.current.length > 0) {
+        setCurrentGuess(prev => prev.slice(0, -1));
+      }
     } else if (key === 'Enter') {
       submit();
     } else {
-      addLetter(key);
-    }
-  };
-
-  const handleKeyUp = (evt: KeyboardEvent) => {
-    const allKeyIds = keyIds.flat();
-    if (allKeyIds.includes(evt.key)) {
-      keyPress(evt.key);
+      if (guessRef.current.length < 5) {
+        setCurrentGuess(prev => prev + key);
+      }
     }
   };
 
