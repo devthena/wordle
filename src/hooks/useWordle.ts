@@ -111,8 +111,6 @@ const useWordle = (answer: string | null) => {
       return;
     }
 
-    console.log('word', word.current);
-
     const formatted = guesses[_turn].map((letter, i) => {
       const answerArray = word.current.split('');
       let colorValue = 'grey';
@@ -170,7 +168,15 @@ const useWordle = (answer: string | null) => {
     }
   };
 
-  return { guessColors, guesses, handleKeyUp, keyColors, keyIds, wordleStatus };
+  return {
+    guessColors,
+    guesses,
+    handleKeyUp,
+    keyColors,
+    keyIds,
+    word: word.current,
+    wordleStatus,
+  };
 };
 
 export default useWordle;
