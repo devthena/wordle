@@ -8,9 +8,6 @@ import { GameStatus } from './constants/enums';
 import styles from './app.module.scss';
 
 const App = () => {
-  // @todo: generate an answer from a list of words
-  const answer = 'align';
-
   const { isAuthenticated, isLoading, user } = useAuth0();
 
   // @todo: switch initial value to ModePick once rooms are supported
@@ -43,7 +40,7 @@ const App = () => {
                   </div>
                 </div>
               )}
-              {status === GameStatus.SoloStart && <Wordle answer={answer} />}
+              {status === GameStatus.SoloStart && <Wordle answer={null} />}
             </div>
           </div>
         )}

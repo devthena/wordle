@@ -21,5 +21,5 @@ export type KeyTileProps = {
 };
 
 export type WordleProps = {
-  answer: string;
+  answer: string | null;
 };

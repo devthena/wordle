@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+
+import { WordleStatus } from '../constants/enums';
 import { GuessesObject } from '../constants/types';
+import { WordList } from '../constants/word-list';
 
 const useWordle = (answer: string) => {
   const guess = useRef('');
   const turn = useRef(1);
+  const word = useRef(answer);
+
   const [currentGuess, setCurrentGuess] = useState<string>('');
+  const [wordleStatus, setWordleStatus] = useState(WordleStatus.Ongoing);
 
   const [guesses, setGuesses] = useState<GuessesObject>({
     1: Array(5).fill(''),
@@ -31,7 +37,7 @@ const useWordle = (answer: string) => {
   ];
 
   useEffect(() => {
-    if (turn.current > 6) return;
+    if (!turn.current) return;
 
     guess.current = currentGuess;
 
@@ -49,63 +55,80 @@ const useWordle = (answer: string) => {
       );
       return updatedGuesses;
     });
-  }, [currentGuess, turn]);
+  }, [currentGuess]);
 
   const submit = () => {
-    // @todo: match the guess if it's an actual word
     const _turn = turn.current;
-    const isGuessValid = guess.current.length === 5;
-    const isTurnValid = _turn <= 6;
+    const _guess = guess.current;
 
-    if (isGuessValid && isTurnValid) {
-      // @todo: check if the guess is correct or if the game is over
+    if (guess.current.length < 5) {
+      setWordleStatus(WordleStatus.InvalidTurn);
+      setTimeout(() => {
+        setWordleStatus(WordleStatus.Ongoing);
+      }, 1500);
+      return;
+    }
 
-      const formatted = guesses[_turn].map((letter, i) => {
-        const answerArray = answer.split('');
-        const letterIndex = answerArray.indexOf(letter);
+    if (!WordList.includes(guess.current)) {
+      setWordleStatus(WordleStatus.InvalidWord);
+      setTimeout(() => {
+        setWordleStatus(WordleStatus.Ongoing);
+      }, 1500);
+      return;
+    }
 
-        let colorValue = 'grey';
-        if (letterIndex >= 0) colorValue = 'yellow';
-        if (letterIndex === i) colorValue = 'green';
+    const formatted = guesses[_turn].map((letter, i) => {
+      const answerArray = word.current.split('');
+      let colorValue = 'grey';
 
-        return colorValue;
-      });
+      if (answerArray.indexOf(letter) >= 0) colorValue = 'yellow';
+      if (letter === answerArray[i]) colorValue = 'green';
 
-      setGuessColors(prev => {
-        const updatedFormattedGuesses = { ...prev };
-        updatedFormattedGuesses[_turn].splice(
-          0,
-          formatted.length,
-          ...formatted
-        );
-        return updatedFormattedGuesses;
-      });
+      return colorValue;
+    });
 
+    setGuessColors(prev => {
+      const updatedFormattedGuesses = { ...prev };
+      updatedFormattedGuesses[_turn].splice(0, formatted.length, ...formatted);
+      return updatedFormattedGuesses;
+    });
+
+    if (_guess === word.current) {
+      turn.current = 0;
+      setWordleStatus(WordleStatus.Answered);
+    } else {
       setCurrentGuess('');
       turn.current += 1;
-      guess.current = '';
+    }
+
+    if (turn.current > 6) {
+      turn.current = 0;
+      return setWordleStatus(WordleStatus.Completed);
     }
   };
 
   const handleKeyUp = (key: string) => {
     const allKeyIds = keyIds.flat();
 
-    if (!allKeyIds.includes(key) || turn.current > 6) return;
+    if (!allKeyIds.includes(key)) return;
 
     if (key === 'Backspace') {
+      if (guess.current === word.current) return;
       if (guess.current.length > 0) {
         setCurrentGuess(prev => prev.slice(0, -1));
       }
     } else if (key === 'Enter') {
+      if (!turn.current) return;
       submit();
     } else {
+      if (guess.current === word.current) return;
       if (guess.current.length < 5) {
         setCurrentGuess(prev => prev + key);
       }
     }
   };
 
-  return { guessColors, guesses, handleKeyUp, keyIds };
+  return { guessColors, guesses, handleKeyUp, keyIds, wordleStatus };
 };
 
 export default useWordle;

@@ -1,0 +1,27 @@
+.note {
+  animation: fadeOut ease 2s;
+  font-size: 12px;
+  margin: 0;
+}
+
+.noteWrapper {
+  align-items: center;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 28px;
+  margin: 0 0 15px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
