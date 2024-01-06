@@ -23,8 +23,8 @@
 
 .row {
   display: flex;
-  height: 35px;
-  padding: 1px 0;
+  height: 38px;
+  padding: 0 0 5px;
 
   @media screen and (min-width: 768px) {
     height: 46px;
@@ -38,7 +38,7 @@
     flex-grow: 1;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
-    margin-right: 1px;
+    margin-right: 5px;
     min-width: 30px;
     text-transform: capitalize;
 
