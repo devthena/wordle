@@ -20,7 +20,7 @@ const App = ({ version }: AppProps) => {
         {isLoading && <Loading />}
         {!isAuthenticated && !isLoading && (
           <div className={styles.auth}>
-            <h1>Hello.</h1>
+            <h1 className={styles.authTitle}>Hello.</h1>
             <LoginButton />
           </div>
         )}
@@ -46,7 +46,7 @@ const App = ({ version }: AppProps) => {
           </div>
         )}
       </div>
-      <Footer version={version} />
+      <Footer isAuthenticated={isAuthenticated} version={version} />
     </main>
   );
 };
