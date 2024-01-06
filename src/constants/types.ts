@@ -13,7 +13,12 @@ export type HeaderProps = {
 
 export type KeyboardProps = {
   onKeyUp: Function;
+  keyColors: KeyColorObject;
   keys: string[][];
+};
+
+export type KeyColorObject = {
+  [key: string]: string;
 };
 
 export type KeyTileProps = {

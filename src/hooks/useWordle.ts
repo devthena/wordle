@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { WordleStatus } from '../constants/enums';
-import { GuessesObject } from '../constants/types';
+import { GuessesObject, KeyColorObject } from '../constants/types';
 import { WordList } from '../constants/word-list';
 
 const useWordle = (answer: string) => {
@@ -29,6 +29,8 @@ const useWordle = (answer: string) => {
     5: Array(5).fill(''),
     6: Array(5).fill(''),
   });
+
+  const [keyColors, setKeyColors] = useState<KeyColorObject>({});
 
   const keyIds = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
@@ -84,6 +86,12 @@ const useWordle = (answer: string) => {
       if (answerArray.indexOf(letter) >= 0) colorValue = 'yellow';
       if (letter === answerArray[i]) colorValue = 'green';
 
+      setKeyColors(prev => {
+        const updatedKeyColors = { ...prev };
+        updatedKeyColors[letter] = colorValue;
+        return updatedKeyColors;
+      });
+
       return colorValue;
     });
 
@@ -128,7 +136,7 @@ const useWordle = (answer: string) => {
     }
   };
 
-  return { guessColors, guesses, handleKeyUp, keyIds, wordleStatus };
+  return { guessColors, guesses, handleKeyUp, keyColors, keyIds, wordleStatus };
 };
 
 export default useWordle;

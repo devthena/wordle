@@ -3,13 +3,17 @@ import { KeyboardProps, KeyTileProps } from '../../constants/types';
 
 import styles from './index.module.scss';
 
-const Keyboard = ({ onKeyUp, keys }: KeyboardProps) => {
+const Keyboard = ({ onKeyUp, keyColors, keys }: KeyboardProps) => {
   const KeyTile = ({ id }: KeyTileProps) => {
     const isBackspace = id === 'Backspace';
+    let styleNames = keyColors[id]
+      ? styles[keyColors[id]]
+      : isBackspace
+      ? styles.backspace
+      : undefined;
+
     return (
-      <button
-        className={isBackspace ? styles.backspace : undefined}
-        onClick={() => onKeyUp(id)}>
+      <button className={styleNames} onClick={() => onKeyUp(id)}>
         {isBackspace ? <BackspaceIcon /> : id}
       </button>
     );
