@@ -8,6 +8,7 @@ export type AppProps = {
 };
 
 export type FooterProps = {
+  isAuthenticated: boolean;
   version: string;
 };
 

@@ -46,7 +46,7 @@ const App = ({ version }: AppProps) => {
           </div>
         )}
       </div>
-      <Footer version={version} />
+      <Footer isAuthenticated={isAuthenticated} version={version} />
     </main>
   );
 };
