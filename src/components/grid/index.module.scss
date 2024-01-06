@@ -6,13 +6,13 @@
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 3px;
   height: 300px;
-  margin: 0 auto 10px;
+  margin: 0 auto 20px;
   width: 250px;
 
   @media screen and (min-width: 768px) {
     grid-gap: 5px;
     height: 375px;
-    margin: 0 auto 20px;
+    margin: 0 auto 40px;
     width: 320px;
   }
 }

@@ -14,4 +14,5 @@ export const enum WordleStatus {
   InvalidWord,
   InvalidTurn,
   Ongoing,
+  Restart,
 }

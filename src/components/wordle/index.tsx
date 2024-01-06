@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-import { AnswerList } from '../../constants/answer-list';
 import { WordleProps } from '../../constants/types';
 import useWordle from '../../hooks/useWordle';
 
@@ -11,15 +10,8 @@ import styles from './index.module.scss';
 import { WordleStatus } from '../../constants/enums';
 
 const Wordle = ({ answer }: WordleProps) => {
-  const generateAnswer = () => {
-    const randomIndex = Math.floor(Math.random() * AnswerList.length);
-    return AnswerList[randomIndex];
-  };
-
-  const newAnswer = answer || generateAnswer();
-
   const { guessColors, guesses, handleKeyUp, keyColors, keyIds, wordleStatus } =
-    useWordle(newAnswer);
+    useWordle(answer);
 
   useEffect(() => {
     const keyUpHandler = (evt: KeyboardEvent) => {
@@ -33,11 +25,19 @@ const Wordle = ({ answer }: WordleProps) => {
     <div className={styles.container}>
       <h1 className={styles.title}>Wordle</h1>
       <div className={styles.noteWrapper}>
+        {(wordleStatus === WordleStatus.Answered ||
+          wordleStatus === WordleStatus.Completed) && (
+          <p className={styles.note}>Press 'Enter' to play again!</p>
+        )}
         {wordleStatus === WordleStatus.InvalidTurn && (
-          <p className={styles.note}>Not enough letters</p>
+          <p className={`${styles.note} ${styles.noteFade}`}>
+            Not enough letters
+          </p>
         )}
         {wordleStatus === WordleStatus.InvalidWord && (
-          <p className={styles.note}>Not in word list</p>
+          <p className={`${styles.note} ${styles.noteFade}`}>
+            Not in word list
+          </p>
         )}
       </div>
 

@@ -1,7 +1,10 @@
 .note {
-  animation: fadeOut ease 2s;
-  font-size: 12px;
+  font-size: 14px;
   margin: 0;
+}
+
+.noteFade {
+  animation: fadeOut ease 2s;
 }
 
 .noteWrapper {
@@ -13,8 +16,12 @@
 }
 
 .title {
-  font-size: 28px;
-  margin: 0 0 15px;
+  font-size: 20px;
+  margin: 15px 0;
+
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
 }
 
 @keyframes fadeOut {
