@@ -7,6 +7,7 @@ import './index.scss';
 
 const AUTH0_DOMAIN = process.env.REACT_APP_AUTH0_DOMAIN ?? '';
 const AUTH0_CLIENT_ID = process.env.REACT_APP_AUTH0_CLIENT_ID ?? '';
+const BUILD_VERSION = process.env.REACT_APP_VERSION ?? '';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -19,6 +20,6 @@ root.render(
     authorizationParams={{
       redirect_uri: window.location.origin,
     }}>
-    <App />
+    <App version={BUILD_VERSION} />
   </Auth0Provider>
 );

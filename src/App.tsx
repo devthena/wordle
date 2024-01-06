@@ -4,10 +4,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Footer, Header, Loading, LoginButton, Wordle } from './components';
 
 import { GameStatus } from './constants/enums';
+import { AppProps } from './constants/types';
 
 import styles from './app.module.scss';
 
-const App = () => {
+const App = ({ version }: AppProps) => {
   const { isAuthenticated, isLoading, user } = useAuth0();
 
   // @todo: switch initial value to ModePick once rooms are supported
@@ -45,7 +46,7 @@ const App = () => {
           </div>
         )}
       </div>
-      <Footer />
+      <Footer version={version} />
     </main>
   );
 };

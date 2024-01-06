@@ -3,6 +3,14 @@ export type AnswerGridProps = {
   guesses: GuessesObject;
 };
 
+export type AppProps = {
+  version: string;
+};
+
+export type FooterProps = {
+  version: string;
+};
+
 export type GuessesObject = {
   [key: number]: string[];
 };
