@@ -1,6 +1,8 @@
 {
   "name": "wordle",
   "version": "0.1.0",
+  "author": "athena@parthenon.app",
+  "license": "MIT",
   "dependencies": {
     "@auth0/auth0-react": "^2.2.3",
     "@types/node": "^16.7.13",
