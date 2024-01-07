@@ -54,7 +54,7 @@ const Wordle = ({ answer }: WordleProps) => {
       </div>
 
       <AnswerGrid colors={guessColors} guesses={guesses} />
-      <Keyboard onKeyUp={handleKeyUp} keyColors={keyColors} keys={keyIds} />
+      <Keyboard colors={keyColors} keys={keyIds} onKeyUp={handleKeyUp} />
     </div>
   );
 };

@@ -3,14 +3,14 @@ import { KeyboardProps, KeyTileProps } from '../../constants/types';
 
 import styles from './index.module.scss';
 
-const Keyboard = ({ onKeyUp, keyColors, keys }: KeyboardProps) => {
+const Keyboard = ({ colors, keys, onKeyUp }: KeyboardProps) => {
   const KeyTile = ({ id }: KeyTileProps) => {
     const isBackspace = id === 'Backspace';
     const isEnter = id === 'Enter';
 
     let styleNames;
 
-    if (keyColors[id]) styleNames = styles[keyColors[id]];
+    if (colors[id]) styleNames = styles[colors[id]];
     else if (isBackspace) styleNames = styles.backspace;
     else if (isEnter) styleNames = styles.enter;
 

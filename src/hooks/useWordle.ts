@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { WordleStatus } from '../constants/enums';
-import { GuessesObject, KeyColorObject } from '../constants/types';
+import { GuessesObject, ColorObject } from '../constants/types';
 import { AnswerList } from '../constants/answer-list';
 import { WordList } from '../constants/word-list';
 
@@ -36,7 +36,7 @@ const useWordle = (answer: string | null) => {
     6: Array(5).fill(''),
   });
 
-  const [keyColors, setKeyColors] = useState<KeyColorObject>({});
+  const [keyColors, setKeyColors] = useState<ColorObject>({});
 
   const keyIds = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
@@ -94,8 +94,9 @@ const useWordle = (answer: string | null) => {
   const submit = () => {
     const _turn = turn.current;
     const _guess = guess.current;
+    const _word = word.current;
 
-    if (guess.current.length < 5) {
+    if (_guess.length < 5) {
       setWordleStatus(WordleStatus.InvalidTurn);
       setTimeout(() => {
         setWordleStatus(WordleStatus.Ongoing);
@@ -103,7 +104,7 @@ const useWordle = (answer: string | null) => {
       return;
     }
 
-    if (!WordList.includes(guess.current)) {
+    if (!WordList.includes(_guess)) {
       setWordleStatus(WordleStatus.InvalidWord);
       setTimeout(() => {
         setWordleStatus(WordleStatus.Ongoing);
@@ -111,29 +112,42 @@ const useWordle = (answer: string | null) => {
       return;
     }
 
-    const formatted = guesses[_turn].map((letter, i) => {
-      const answerArray = word.current.split('');
-      let colorValue = 'grey';
+    const answerArray = _word.split('');
+    const guessArray = _guess.split('');
+    const colorArray = Array(5).fill('grey');
 
-      if (answerArray.indexOf(letter) >= 0) colorValue = 'yellow';
-      if (letter === answerArray[i]) colorValue = 'green';
+    const newKeyColors: ColorObject = {};
 
-      setKeyColors(prev => {
-        const updatedKeyColors = { ...prev };
-        updatedKeyColors[letter] = colorValue;
-        return updatedKeyColors;
-      });
-
-      return colorValue;
+    guessArray.forEach((letter, i) => {
+      if (answerArray[i] === letter) {
+        colorArray[i] = 'green';
+        newKeyColors[letter] = 'green';
+        answerArray[i] = '';
+      } else {
+        newKeyColors[letter] = 'grey';
+      }
     });
+
+    guessArray.forEach((letter, i) => {
+      if (colorArray[i] !== 'green') {
+        const letterIndex = answerArray.indexOf(letter);
+        if (letterIndex >= 0) {
+          colorArray[i] = 'yellow';
+          newKeyColors[letter] = 'yellow';
+          answerArray[letterIndex] = '';
+        }
+      }
+    });
+
+    setKeyColors(prev => ({ ...prev, ...newKeyColors }));
 
     setGuessColors(prev => {
       const updatedFormattedGuesses = { ...prev };
-      updatedFormattedGuesses[_turn].splice(0, 5, ...formatted);
+      updatedFormattedGuesses[_turn].splice(0, 5, ...colorArray);
       return updatedFormattedGuesses;
     });
 
-    if (_guess === word.current) {
+    if (_guess === _word) {
       turn.current = 0;
       setWordleStatus(WordleStatus.Answered);
     } else {
