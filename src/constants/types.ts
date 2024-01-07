@@ -7,6 +7,10 @@ export type AppProps = {
   version: string;
 };
 
+export type ColorObject = {
+  [key: string]: string;
+};
+
 export type FooterProps = {
   isAuthenticated: boolean;
   version: string;
@@ -21,13 +25,9 @@ export type HeaderProps = {
 };
 
 export type KeyboardProps = {
-  onKeyUp: Function;
-  keyColors: KeyColorObject;
+  colors: ColorObject;
   keys: string[][];
-};
-
-export type KeyColorObject = {
-  [key: string]: string;
+  onKeyUp: Function;
 };
 
 export type KeyTileProps = {
