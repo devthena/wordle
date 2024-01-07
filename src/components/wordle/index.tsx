@@ -16,6 +16,7 @@ const Wordle = ({ answer }: WordleProps) => {
     handleKeyUp,
     keyColors,
     keyIds,
+    turn,
     word,
     wordleStatus,
   } = useWordle(answer);
@@ -53,7 +54,12 @@ const Wordle = ({ answer }: WordleProps) => {
         )}
       </div>
 
-      <AnswerGrid colors={guessColors} guesses={guesses} />
+      <AnswerGrid
+        colors={guessColors}
+        guesses={guesses}
+        status={wordleStatus}
+        turn={turn}
+      />
       <Keyboard colors={keyColors} keys={keyIds} onKeyUp={handleKeyUp} />
     </div>
   );

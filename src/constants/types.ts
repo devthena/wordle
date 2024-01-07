@@ -1,6 +1,10 @@
+import { WordleStatus } from './enums';
+
 export type AnswerGridProps = {
   colors: GuessesObject;
   guesses: GuessesObject;
+  status: WordleStatus;
+  turn: number;
 };
 
 export type AppProps = {
@@ -21,6 +25,7 @@ export type GuessesObject = {
 };
 
 export type HeaderProps = {
+  avatar: string | undefined;
   username: string | undefined;
 };
 

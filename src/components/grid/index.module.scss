@@ -17,6 +17,10 @@
   }
 }
 
+.invalid {
+  animation: shake 0.25s;
+}
+
 .letter {
   align-items: center;
   border: 1px solid #cccccc;
@@ -56,4 +60,22 @@
 .yellow {
   background-color: #d2b55b;
   color: #ffffff;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(3px);
+  }
+  50% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

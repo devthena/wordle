@@ -188,6 +188,7 @@ const useWordle = (answer: string | null) => {
     handleKeyUp,
     keyColors,
     keyIds,
+    turn: turn.current,
     word: word.current,
     wordleStatus,
   };
