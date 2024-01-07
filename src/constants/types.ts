@@ -21,6 +21,7 @@ export type GuessesObject = {
 };
 
 export type HeaderProps = {
+  avatar: string | undefined;
   username: string | undefined;
 };
 

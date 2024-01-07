@@ -1,13 +1,21 @@
 .container {
   display: none;
-  padding: 10px;
-  text-align: right;
 
-  @media screen and (min-width: 480px) {
-    display: block;
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    display: flex;
+    justify-content: end;
+    padding: 10px;
   }
 }
 
-.greeting {
+.avatar {
+  border-radius: 100%;
+  height: 30px;
   margin-right: 10px;
+  width: 30px;
+}
+
+.greeting {
+  margin-right: 8px;
 }

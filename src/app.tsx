@@ -26,7 +26,10 @@ const App = ({ version }: AppProps) => {
         )}
         {isAuthenticated && !isLoading && (
           <div>
-            <Header username={user?.nickname || user?.name || user?.email} />
+            <Header
+              avatar={user?.picture}
+              username={user?.nickname || user?.name || user?.email}
+            />
             <div className={styles.content}>
               {status === GameStatus.ModePick && (
                 <div>
