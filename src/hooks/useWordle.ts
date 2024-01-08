@@ -120,21 +120,21 @@ const useWordle = (answer: string | null) => {
 
     guessArray.forEach((letter, i) => {
       if (answerArray[i] === letter) {
+        answerArray[i] = '';
         colorArray[i] = 'green';
         newKeyColors[letter] = 'green';
-        answerArray[i] = '';
-      } else {
-        newKeyColors[letter] = 'grey';
       }
     });
 
     guessArray.forEach((letter, i) => {
-      if (colorArray[i] !== 'green') {
+      if (newKeyColors[letter] !== 'green') {
         const letterIndex = answerArray.indexOf(letter);
         if (letterIndex >= 0) {
+          answerArray[letterIndex] = '';
           colorArray[i] = 'yellow';
           newKeyColors[letter] = 'yellow';
-          answerArray[letterIndex] = '';
+        } else if (newKeyColors[letter] !== 'yellow') {
+          newKeyColors[letter] = 'grey';
         }
       }
     });
