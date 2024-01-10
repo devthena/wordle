@@ -39,6 +39,10 @@ export type KeyTileProps = {
   id: string;
 };
 
+export type LandingProps = {
+  setStatus: Function;
+};
+
 export type WordleProps = {
   answer: string | null;
 };

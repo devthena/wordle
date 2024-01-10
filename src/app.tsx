@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import { Footer, Header, Loading, LoginButton, Wordle } from './components';
+import {
+  Footer,
+  Header,
+  Landing,
+  Loading,
+  LoginButton,
+  Wordle,
+} from './components';
 
 import { GameStatus } from './constants/enums';
 import { AppProps } from './constants/types';
@@ -10,9 +17,7 @@ import styles from './app.module.scss';
 
 const App = ({ version }: AppProps) => {
   const { isAuthenticated, isLoading, user } = useAuth0();
-
-  // @todo: switch initial value to ModePick once rooms are supported
-  const [status, setStatus] = useState(GameStatus.SoloStart);
+  const [status, setStatus] = useState(GameStatus.ModePick);
 
   return (
     <main className={styles.app}>
@@ -32,17 +37,7 @@ const App = ({ version }: AppProps) => {
             />
             <div className={styles.content}>
               {status === GameStatus.ModePick && (
-                <div>
-                  <h1>Play Solo</h1>
-                  <button onClick={() => setStatus(GameStatus.SoloStart)}>
-                    START
-                  </button>
-                  <h2>Play with Friends</h2>
-                  <div>
-                    <button>New</button>
-                    <div>Room List</div>
-                  </div>
-                </div>
+                <Landing setStatus={setStatus} />
               )}
               {status === GameStatus.SoloStart && <Wordle answer={null} />}
             </div>
