@@ -1,0 +1,35 @@
+.chart {
+  height: 160px !important;
+  margin: 0 auto;
+  width: 320px !important;
+
+  @media screen and (min-width: 768px) {
+    height: 225px !important;
+    margin: 0;
+    width: 450px !important;
+  }
+}
+
+.soloContainer {
+  margin-bottom: 20px;
+}
+
+.stats {
+  @media screen and (min-width: 768px) {
+    margin-right: 50px;
+  }
+}
+
+.statsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.title {
+}
