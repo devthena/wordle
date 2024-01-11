@@ -28,16 +28,11 @@
 
   & > button {
     border-radius: 5px;
+    cursor: pointer;
     font-size: 16px;
     height: 50px;
     margin: 5px 0;
     width: 200px;
-  }
-}
-
-.stats {
-  @media screen and (min-width: 768px) {
-    margin-right: 50px;
   }
 }
 
@@ -46,13 +41,9 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
   padding: 20px;
 
   @media screen and (min-width: 768px) {
     display: flex;
   }
-}
-
-.title {
 }
