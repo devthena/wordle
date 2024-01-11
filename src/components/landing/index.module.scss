@@ -28,7 +28,10 @@
 
   & > button {
     border-radius: 5px;
+    color: #353839;
+    cursor: pointer;
     font-size: 16px;
+    font-weight: 500;
     height: 50px;
     margin: 5px 0;
     width: 200px;
@@ -36,8 +39,13 @@
 }
 
 .stats {
-  @media screen and (min-width: 768px) {
-    margin-right: 50px;
+  & > p {
+    margin: 10px 0;
+  }
+
+  & > p:last-child {
+    font-size: 12px;
+    margin: 20px 0 0;
   }
 }
 
@@ -46,13 +54,9 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
   padding: 20px;
 
   @media screen and (min-width: 768px) {
     display: flex;
   }
-}
-
-.title {
 }

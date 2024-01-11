@@ -1,6 +1,6 @@
 {
   "name": "wordle",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "author": "athena@parthenon.app",
   "license": "MIT",
   "dependencies": {
@@ -9,6 +9,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "chart.js": "^4.4.1",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
