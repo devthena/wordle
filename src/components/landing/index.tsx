@@ -22,12 +22,11 @@ const Landing = ({ setStatus }: LandingProps) => {
         <div className={styles.statsContainer}>
           <div className={styles.stats}>
             <h3>Solo Stats</h3>
-            <div>
-              <p>Win Percentage: 97%</p>
-              <p>Max Streak: 3</p>
-              <p>Current Streak: 2</p>
-              <p>Total Times Played: 11</p>
-            </div>
+            <p>Win Percentage: 97%</p>
+            <p>Max Streak: 3</p>
+            <p>Current Streak: 2</p>
+            <p>Total Times Played: 11</p>
+            <p>Guess Distribution</p>
           </div>
           <Bar
             className={styles.chart}

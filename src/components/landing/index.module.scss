@@ -28,11 +28,24 @@
 
   & > button {
     border-radius: 5px;
+    color: #353839;
     cursor: pointer;
     font-size: 16px;
+    font-weight: 500;
     height: 50px;
     margin: 5px 0;
     width: 200px;
+  }
+}
+
+.stats {
+  & > p {
+    margin: 10px 0;
+  }
+
+  & > p:last-child {
+    font-size: 12px;
+    margin: 20px 0 0;
   }
 }
 
