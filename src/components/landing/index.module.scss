@@ -1,17 +1,19 @@
 .chart {
-  height: 160px !important;
+  height: 150px !important;
   margin: 0 auto;
-  width: 320px !important;
-
-  @media screen and (min-width: 768px) {
-    height: 225px !important;
-    margin: 0;
-    width: 450px !important;
-  }
+  width: 300px !important;
 }
 
-.soloContainer {
-  margin-bottom: 20px;
+.container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.playContainer {
+  flex-grow: 1;
+  text-align: center;
 }
 
 .stats {
@@ -21,13 +23,15 @@
 }
 
 .statsContainer {
-  display: flex;
+  border: 1px solid #353839;
+  display: none;
   flex-direction: column;
   justify-content: center;
   margin-bottom: 30px;
+  padding: 20px;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
+    display: flex;
   }
 }
 
