@@ -1,12 +1,20 @@
-import { StatsIcon } from '../../constants/icons';
+import { GameStatus } from '../../constants/enums';
+import { BackIcon, StatsIcon } from '../../constants/icons';
 import { HeaderProps } from '../../constants/types';
 import LogoutButton from '../logout-button';
 import styles from './index.module.scss';
 
-const Header = ({ avatar, username }: HeaderProps) => {
+const Header = ({ avatar, setStatus, status, username }: HeaderProps) => {
   return (
     <header className={styles.container}>
       <div className={styles.buttonContainer}>
+        {status !== GameStatus.ModePick && (
+          <button
+            className={styles.back}
+            onClick={() => setStatus(GameStatus.ModePick)}>
+            <BackIcon />
+          </button>
+        )}
         <button className={styles.stats}>
           <StatsIcon />
         </button>

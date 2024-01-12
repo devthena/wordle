@@ -28,6 +28,20 @@
   }
 }
 
+button.back {
+  background: transparent;
+  border: 1px solid #353839;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 2px 5px 0 2px;
+
+  & > svg {
+    fill: #353839;
+    height: 20px;
+    width: 20px;
+  }
+}
+
 button.stats {
   background: transparent;
   border: 1px solid #353839;
@@ -38,10 +52,5 @@ button.stats {
     fill: #353839;
     height: 20px;
     width: 20px;
-
-    @media screen and (min-width: 768px) {
-      height: 24px;
-      width: 24px;
-    }
   }
 }

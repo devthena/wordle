@@ -33,6 +33,8 @@ const App = ({ version }: AppProps) => {
           <div>
             <Header
               avatar={user?.picture}
+              setStatus={setStatus}
+              status={status}
               username={user?.nickname || user?.name || user?.email}
             />
             <div className={styles.content}>
