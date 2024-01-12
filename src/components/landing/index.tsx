@@ -1,4 +1,3 @@
-import { Bar } from 'react-chartjs-2';
 import { GameStatus } from '../../constants/enums';
 import { LandingProps } from '../../constants/types';
 import styles from './index.module.scss';
