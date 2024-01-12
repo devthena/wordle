@@ -32,28 +32,15 @@
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
-    height: 50px;
+    height: 52px;
     margin: 5px 0;
-    width: 200px;
-  }
-}
-
-.stats {
-  & > p {
-    margin: 10px 0;
-  }
-
-  & > p:last-child {
-    font-size: 12px;
-    margin: 20px 0 0;
+    width: 210px;
   }
 }
 
 .statsContainer {
   border: 1px solid #353839;
   display: none;
-  flex-direction: column;
-  justify-content: center;
   padding: 20px;
 
   @media screen and (min-width: 768px) {

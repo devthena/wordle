@@ -1,4 +1,4 @@
-import { WordleStatus } from './enums';
+import { GameStatus, ModalContent, WordleStatus } from './enums';
 
 export type AnswerGridProps = {
   colors: GuessesObject;
@@ -26,6 +26,9 @@ export type GuessesObject = {
 
 export type HeaderProps = {
   avatar: string | undefined;
+  setDisplayModal: Function;
+  setStatus: Function;
+  status: GameStatus;
   username: string | undefined;
 };
 
@@ -41,6 +44,11 @@ export type KeyTileProps = {
 
 export type LandingProps = {
   setStatus: Function;
+};
+
+export type ModalProps = {
+  content?: ModalContent;
+  setDisplayModal: Function;
 };
 
 export type WordleProps = {
