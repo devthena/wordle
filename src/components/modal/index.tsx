@@ -1,6 +1,8 @@
 import { ModalContent } from '../../constants/enums';
 import { CloseIcon } from '../../constants/icons';
 import { ModalProps } from '../../constants/types';
+
+import Stats from '../stats';
 import styles from './index.module.scss';
 
 const Modal = ({
@@ -24,7 +26,7 @@ const Modal = ({
         )}
         {content === ModalContent.Stats && (
           <div className={styles.statsContainer}>
-            <h1>Stats</h1>
+            <Stats />
           </div>
         )}
       </div>

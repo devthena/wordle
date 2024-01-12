@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Chart, registerables } from 'chart.js';
+
 import {
   Footer,
   Header,
@@ -15,6 +18,8 @@ import { GameStatus } from './constants/enums';
 import { AppProps } from './constants/types';
 
 import styles from './app.module.scss';
+
+Chart.register(...registerables, ChartDataLabels);
 
 const App = ({ version }: AppProps) => {
   const { isAuthenticated, isLoading, user } = useAuth0();
