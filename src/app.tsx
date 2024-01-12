@@ -7,6 +7,7 @@ import {
   Landing,
   Loading,
   LoginButton,
+  Modal,
   Wordle,
 } from './components';
 
@@ -17,10 +18,12 @@ import styles from './app.module.scss';
 
 const App = ({ version }: AppProps) => {
   const { isAuthenticated, isLoading, user } = useAuth0();
+  const [displayModal, setDisplayModal] = useState(false);
   const [status, setStatus] = useState(GameStatus.ModePick);
 
   return (
     <main className={styles.app}>
+      {displayModal && <Modal setDisplayModal={setDisplayModal} />}
       <div className={styles.page}>
         {isLoading && <Loading />}
         {!isAuthenticated && !isLoading && (
@@ -33,6 +36,7 @@ const App = ({ version }: AppProps) => {
           <div>
             <Header
               avatar={user?.picture}
+              setDisplayModal={setDisplayModal}
               setStatus={setStatus}
               status={status}
               username={user?.nickname || user?.name || user?.email}

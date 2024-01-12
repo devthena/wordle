@@ -4,7 +4,13 @@ import { HeaderProps } from '../../constants/types';
 import LogoutButton from '../logout-button';
 import styles from './index.module.scss';
 
-const Header = ({ avatar, setStatus, status, username }: HeaderProps) => {
+const Header = ({
+  avatar,
+  setDisplayModal,
+  setStatus,
+  status,
+  username,
+}: HeaderProps) => {
   return (
     <header className={styles.container}>
       <div className={styles.buttonContainer}>
@@ -15,7 +21,7 @@ const Header = ({ avatar, setStatus, status, username }: HeaderProps) => {
             <BackIcon />
           </button>
         )}
-        <button className={styles.stats}>
+        <button className={styles.stats} onClick={() => setDisplayModal(true)}>
           <StatsIcon />
         </button>
       </div>

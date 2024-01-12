@@ -8,6 +8,11 @@ export const enum GameStatus {
   CoopEnd,
 }
 
+export const enum ModalContent {
+  CreateRoom,
+  Stats,
+}
+
 export const enum WordleStatus {
   Answered,
   Completed,
