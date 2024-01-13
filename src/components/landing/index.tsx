@@ -12,8 +12,8 @@ const Landing = ({ setStatus }: LandingProps) => {
           <h2>Solo</h2>
           <button onClick={() => setStatus(GameStatus.SoloStart)}>PLAY</button>
           <h2>Co-op Rooms</h2>
-          <button>CREATE</button>
-          <button>JOIN</button>
+          <button disabled>CREATE</button>
+          <button disabled>JOIN</button>
         </div>
         <div className={styles.statsContainer}>
           <Stats />
