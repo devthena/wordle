@@ -15,11 +15,19 @@ const Header = ({
     <header className={styles.container}>
       <div className={styles.buttonContainer}>
         {status !== GameStatus.ModePick && (
-          <button
-            className={styles.back}
-            onClick={() => setStatus(GameStatus.ModePick)}>
-            <BackIcon />
-          </button>
+          <>
+            <button
+              className={styles.back}
+              onClick={() => setStatus(GameStatus.ModePick)}>
+              <BackIcon />
+            </button>
+            <button
+              className={styles.backDesktop}
+              onClick={() => setStatus(GameStatus.ModePick)}>
+              <BackIcon />
+              <span>BACK</span>
+            </button>
+          </>
         )}
         <button className={styles.stats} onClick={() => setDisplayModal(true)}>
           <StatsIcon />
