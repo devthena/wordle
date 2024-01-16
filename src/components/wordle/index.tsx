@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 
+import { WordleStatus } from '../../constants/enums';
 import { WordleProps } from '../../constants/types';
+
 import useWordle from '../../hooks/useWordle';
 
 import AnswerGrid from '../grid';
 import Keyboard from '../keyboard';
 
 import styles from './index.module.scss';
-import { WordleStatus } from '../../constants/enums';
 
 const Wordle = ({ answer }: WordleProps) => {
   const {

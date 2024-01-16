@@ -1,5 +1,6 @@
 import { WordleStatus } from '../../constants/enums';
 import { AnswerGridProps } from '../../constants/types';
+
 import styles from './index.module.scss';
 
 const AnswerGrid = ({ colors, guesses, status, turn }: AnswerGridProps) => {

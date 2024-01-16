@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useState } from 'react';
 
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart, registerables } from 'chart.js';
@@ -22,7 +22,7 @@ import styles from './app.module.scss';
 Chart.register(...registerables, ChartDataLabels);
 
 const App = ({ version }: AppProps) => {
-  const { isAuthenticated, isLoading, user } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const [displayModal, setDisplayModal] = useState(false);
   const [status, setStatus] = useState(GameStatus.ModePick);
 
@@ -40,11 +40,9 @@ const App = ({ version }: AppProps) => {
         {isAuthenticated && !isLoading && (
           <div>
             <Header
-              avatar={user?.picture}
               setDisplayModal={setDisplayModal}
               setStatus={setStatus}
               status={status}
-              username={user?.nickname || user?.name || user?.email}
             />
             <div className={styles.content}>
               {status === GameStatus.ModePick && (
@@ -55,7 +53,7 @@ const App = ({ version }: AppProps) => {
           </div>
         )}
       </div>
-      <Footer isAuthenticated={isAuthenticated} version={version} />
+      <Footer version={version} />
     </main>
   );
 };

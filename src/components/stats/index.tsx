@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Bar } from 'react-chartjs-2';
+
 import styles from './index.module.scss';
 
 const Stats = () => {

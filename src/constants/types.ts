@@ -16,7 +16,6 @@ export type ColorObject = {
 };
 
 export type FooterProps = {
-  isAuthenticated: boolean;
   version: string;
 };
 
@@ -25,11 +24,9 @@ export type GuessesObject = {
 };
 
 export type HeaderProps = {
-  avatar: string | undefined;
   setDisplayModal: Function;
   setStatus: Function;
   status: GameStatus;
-  username: string | undefined;
 };
 
 export type KeyboardProps = {
