@@ -50,6 +50,7 @@ export type ModalProps = {
 
 export type StatsObject = {
   currentStreak: number;
+  distribution: number[];
   maxStreak: number;
   totalPlayed: number;
   totalWon: number;

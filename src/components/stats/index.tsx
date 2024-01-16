@@ -52,8 +52,7 @@ const Stats = () => {
           labels: ['1', '2', '3', '4', '5', '6'],
           datasets: [
             {
-              label: 'Total',
-              data: [0, 7, 27, 80, 53, 3],
+              data: stats.distribution,
               backgroundColor: 'rgba(106, 170, 100, 0.5)',
               borderColor: 'rgb(106, 170, 100)',
               borderWidth: 1,

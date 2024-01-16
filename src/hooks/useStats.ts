@@ -12,6 +12,7 @@ const useStats = () => {
     ? JSON.parse(savedStats)
     : {
         currentStreak: 0,
+        distribution: new Array(6).fill(0),
         maxStreak: 0,
         totalPlayed: 0,
         totalWon: 0,
@@ -29,13 +30,14 @@ const useStats = () => {
       : Math.round((localStats.totalWon / localStats.totalPlayed) * 100) + '%';
   };
 
-  const setStats = (isWin = true) => {
+  const setStats = (winningTurn: number) => {
     setLocalStats(prev => {
       const updatedStats = { ...prev };
       updatedStats.totalPlayed += 1;
 
-      if (isWin) {
+      if (winningTurn > 0) {
         updatedStats.currentStreak += 1;
+        updatedStats.distribution[winningTurn - 1] += 1;
         updatedStats.totalWon += 1;
 
         if (updatedStats.currentStreak > updatedStats.maxStreak) {

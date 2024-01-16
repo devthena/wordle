@@ -153,8 +153,8 @@ const useWordle = (answer: string | null) => {
 
     if (_guess === _word) {
       turn.current = 0;
+      setStats(_turn);
       setWordleStatus(WordleStatus.Answered);
-      setStats();
     } else {
       setCurrentGuess('');
       turn.current += 1;
@@ -162,8 +162,8 @@ const useWordle = (answer: string | null) => {
 
     if (turn.current > 6) {
       turn.current = 0;
+      setStats(0);
       setWordleStatus(WordleStatus.Completed);
-      setStats(false);
     }
   };
 
