@@ -1,16 +1,34 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { Bar } from 'react-chartjs-2';
-
 import styles from './index.module.scss';
 
 const Stats = () => {
+  const { user } = useAuth0();
+  const userId = user?.sub?.split('|')[2] || '';
+  const localStats = localStorage.getItem(userId);
+
+  const stats = localStats
+    ? JSON.parse(localStats)
+    : {
+        currentStreak: 0,
+        maxStreak: 0,
+        totalPlayed: 0,
+        totalWon: 0,
+      };
+
+  const winPercentage =
+    !stats.totalWon || !stats.totalPlayed
+      ? 'N/A'
+      : (stats.totalWon / stats.totalPlayed).toFixed(2) + '%';
+
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
         <h3>Solo Stats</h3>
-        <p>Win Percentage: 97%</p>
-        <p>Max Streak: 3</p>
-        <p>Current Streak: 2</p>
-        <p>Total Times Played: 11</p>
+        <p>Win Percentage: {winPercentage}</p>
+        <p>Max Streak: {stats.maxStreak}</p>
+        <p>Current Streak: {stats.currentStreak}</p>
+        <p>Total Times Played: {stats.totalPlayed}</p>
         <p>Guess Distribution</p>
       </div>
       <Bar
