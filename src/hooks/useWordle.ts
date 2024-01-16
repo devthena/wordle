@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { AnswerList } from '../constants/answer-list';
 import { WordleStatus } from '../constants/enums';
 import { GuessesObject, ColorObject } from '../constants/types';
-import { AnswerList } from '../constants/answer-list';
 import { WordList } from '../constants/word-list';
 
+import useStats from './useStats';
+
 const useWordle = (answer: string | null) => {
+  const { setStats } = useStats();
+
   const generateAnswer = () => {
     const randomIndex = Math.floor(Math.random() * AnswerList.length);
     return AnswerList[randomIndex];
@@ -149,6 +153,7 @@ const useWordle = (answer: string | null) => {
 
     if (_guess === _word) {
       turn.current = 0;
+      setStats(_turn);
       setWordleStatus(WordleStatus.Answered);
     } else {
       setCurrentGuess('');
@@ -157,7 +162,8 @@ const useWordle = (answer: string | null) => {
 
     if (turn.current > 6) {
       turn.current = 0;
-      return setWordleStatus(WordleStatus.Completed);
+      setStats(0);
+      setWordleStatus(WordleStatus.Completed);
     }
   };
 

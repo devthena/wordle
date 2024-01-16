@@ -1,7 +1,8 @@
 import { GameStatus } from '../../constants/enums';
 import { LandingProps } from '../../constants/types';
-import styles from './index.module.scss';
+
 import Stats from '../stats';
+import styles from './index.module.scss';
 
 const Landing = ({ setStatus }: LandingProps) => {
   return (

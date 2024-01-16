@@ -1,16 +1,19 @@
 import { Bar } from 'react-chartjs-2';
-
+import useStats from '../../hooks/useStats';
 import styles from './index.module.scss';
 
 const Stats = () => {
+  const { getStats, getWinPercentage } = useStats();
+  const stats = getStats();
+
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
         <h3>Solo Stats</h3>
-        <p>Win Percentage: 97%</p>
-        <p>Max Streak: 3</p>
-        <p>Current Streak: 2</p>
-        <p>Total Times Played: 11</p>
+        <p>Win Percentage: {getWinPercentage()}</p>
+        <p>Max Streak: {stats.maxStreak}</p>
+        <p>Current Streak: {stats.currentStreak}</p>
+        <p>Total Times Played: {stats.totalPlayed}</p>
         <p>Guess Distribution</p>
       </div>
       <Bar
@@ -49,8 +52,7 @@ const Stats = () => {
           labels: ['1', '2', '3', '4', '5', '6'],
           datasets: [
             {
-              label: 'Total',
-              data: [0, 7, 27, 80, 53, 3],
+              data: stats.distribution,
               backgroundColor: 'rgba(106, 170, 100, 0.5)',
               borderColor: 'rgb(106, 170, 100)',
               borderWidth: 1,

@@ -1,16 +1,17 @@
+import { useAuth0 } from '@auth0/auth0-react';
+
 import { GameStatus } from '../../constants/enums';
 import { BackIcon, StatsIcon } from '../../constants/icons';
 import { HeaderProps } from '../../constants/types';
+
 import LogoutButton from '../logout-button';
 import styles from './index.module.scss';
 
-const Header = ({
-  avatar,
-  setDisplayModal,
-  setStatus,
-  status,
-  username,
-}: HeaderProps) => {
+const Header = ({ setDisplayModal, setStatus, status }: HeaderProps) => {
+  const { user } = useAuth0();
+  const avatar = user?.picture;
+  const username = user?.nickname || user?.name || user?.email;
+
   return (
     <header className={styles.container}>
       <div className={styles.buttonContainer}>
