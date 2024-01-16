@@ -48,6 +48,13 @@ export type ModalProps = {
   setDisplayModal: Function;
 };
 
+export type StatsObject = {
+  currentStreak: number;
+  maxStreak: number;
+  totalPlayed: number;
+  totalWon: number;
+};
+
 export type WordleProps = {
   answer: string | null;
 };
