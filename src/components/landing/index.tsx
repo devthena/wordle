@@ -10,8 +10,12 @@ const Landing = ({ setStatus }: LandingProps) => {
       <h1>Wordle</h1>
       <div className={styles.container}>
         <div className={styles.playContainer}>
-          <h2>Solo</h2>
-          <button onClick={() => setStatus(GameStatus.SoloStart)}>PLAY</button>
+          <h2 className={styles.solo}>Solo</h2>
+          <button
+            className={styles.play}
+            onClick={() => setStatus(GameStatus.SoloStart)}>
+            PLAY
+          </button>
           <h2>Co-op Rooms</h2>
           <button disabled>CREATE</button>
           <button disabled>JOIN</button>
