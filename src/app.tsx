@@ -33,7 +33,10 @@ const App = ({ version }: AppProps) => {
         {isLoading && <Loading />}
         {!isAuthenticated && !isLoading && (
           <div className={styles.auth}>
-            <h1 className={styles.authTitle}>Hello.</h1>
+            <div className={styles.container}>
+              <h1 className={styles.title}>Wordle</h1>
+              <p>Play Solo or Co-op!</p>
+            </div>
             <LoginButton />
           </div>
         )}
