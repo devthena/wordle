@@ -13,9 +13,9 @@
   }
 
   & > button {
-    background-color: #e9e9ec;
-    border: 1px solid #cccccc;
-    color: #353839;
+    background-color: var(--grey-lighter);
+    border: 1px solid var(--grey-light);
+    color: var(--black);
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -67,14 +67,14 @@ button.enter {
 }
 
 button.green {
-  background-color: #6aaa64;
-  color: #ffffff;
+  background-color: var(--green);
+  color: white;
 }
 button.grey {
-  background-color: #787c7e;
-  color: #ffffff;
+  background-color: var(--grey);
+  color: white;
 }
 button.yellow {
-  background-color: #d2b55b;
-  color: #ffffff;
+  background-color: var(--yellow);
+  color: white;
 }

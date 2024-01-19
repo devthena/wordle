@@ -1,5 +1,5 @@
 .grid {
-  color: #353839;
+  color: var(--black);
   display: grid;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -23,7 +23,7 @@
 
 .letter {
   align-items: center;
-  border: 1px solid #cccccc;
+  border: 1px solid var(--grey-light);
   display: inline-flex;
   font-size: 26px;
   justify-content: center;
@@ -47,19 +47,19 @@
 }
 
 .guessing {
-  border: 1px solid #888888;
+  border: 1px solid var(--grey-dark);
 }
 .green {
-  background-color: #6aaa64;
-  color: #ffffff;
+  background-color: var(--green);
+  color: white;
 }
 .grey {
-  background-color: #787c7e;
-  color: #ffffff;
+  background-color: var(--grey);
+  color: white;
 }
 .yellow {
-  background-color: #d2b55b;
-  color: #ffffff;
+  background-color: var(--yellow);
+  color: white;
 }
 
 @keyframes shake {
