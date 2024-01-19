@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Parthenon Wordle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an app that lets users login to play a game of Wordle.
 
-## Available Scripts
+It has two modes: Solo and Co-op.
 
-In the project directory, you can run:
+For solo mode, this is the same as playing the official Wordle game. For co-op, the user will be able to create a room and invite a second person to play the game with them or against them.
 
-### `yarn start`
+## How to Play
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Guess the Wordle in six (6) tries
+- Each guess must be a valid five-letter word
+- The color of the tiles will change based on how close your guess was to the word
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Co-op with Friends
 
-### `yarn test`
+In the main menu, you can either create a room or join one in order to play with friends. There is a maximum of two people per room, and the host can choose if they will play together as allies or against each other as opponents.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Hosting a Room
 
-### `yarn build`
+Users can create rooms and adjust some settings for the game. After creating the room, the user will be given a `Room Code` that they can share with a friend. Once the friend joins and the game starts, the settings cannot be changed until the game is over.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Joining a Room
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `Room Code` is a five-letter code that will be provided to the host of a room. Once the user enters this code and agrees to join, the game will start. When one person closes the browser or clicks on the Leave button while the game is ongoing, the other person would be notified and the game will end.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Support or Feedback
 
-### `yarn eject`
+Join the AthenaUS community!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can contact Athena if you have any questions or feedback by [sending an email](mailto:athena@parthenon.app) or joining her [Discord server](https://discord.com/invite/5dzECDz).
