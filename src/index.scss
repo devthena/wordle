@@ -1,7 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Quicksand:wght@300;400;500&display=swap');
 
+:root {
+  --black: #353839;
+  --green: #6aaa64;
+  --green-hover: rgba(106, 170, 100, 0.9);
+  --grey: #787c7e;
+  --grey-dark: #888888;
+  --grey-light: #cccccc;
+  --grey-lighter: #e9e9ec;
+  --yellow: #d2b55b;
+}
+
 body {
-  color: #353839;
+  color: var(--black);
   margin: 0;
   font-family: 'Quicksand', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

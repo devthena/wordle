@@ -32,7 +32,7 @@
 
   & > button {
     border-radius: 30px;
-    color: #353839;
+    color: var(--black);
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
@@ -42,8 +42,8 @@
     width: 235px;
 
     &:disabled {
-      border: 2px solid #e9e9ec;
-      color: #cccccc;
+      border: 2px solid var(--grey-lighter);
+      color: var(--grey-light);
       cursor: default;
     }
   }
@@ -54,7 +54,7 @@
 }
 
 .statsContainer {
-  border: 1px solid #353839;
+  border: 1px solid var(--black);
   display: none;
   padding: 20px;
 
@@ -64,11 +64,11 @@
 }
 
 button.play {
-  background-color: #6aaa64;
-  border: 2px solid #228b22;
-  color: #ffffff;
+  background-color: var(--green);
+  border: 2px solid forestgreen;
+  color: white;
 
   &:hover {
-    background-color: rgba(106, 170, 100, 0.9);
+    background-color: var(--green-hover);
   }
 }
