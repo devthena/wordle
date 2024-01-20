@@ -1,6 +1,6 @@
 {
   "name": "wordle",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "athena@parthenon.app",
   "license": "MIT",
   "dependencies": {
