@@ -5,25 +5,17 @@
   min-height: -webkit-fill-available;
 }
 
-.auth {
-  padding: 30px;
+.page {
+  flex-grow: 1;
+  padding: 25px 0;
   text-align: center;
 
-  .container {
-    padding: 30px 0;
-    margin-bottom: 30px;
+  @media screen and (min-width: 480px) {
+    padding: 50px;
   }
-}
-
-.title {
-  margin: 0 0 20px;
 }
 
 .content {
   padding: 15px 0 30px;
   text-align: center;
-}
-
-.page {
-  flex-grow: 1;
 }

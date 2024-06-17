@@ -1,45 +1,49 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { GameStatus, ModalContent } from '../../lib/enums';
+import { BackIcon, RulesIcon, StatsIcon } from '../../lib/icons';
 
-import { GameStatus } from '../../constants/enums';
-import { BackIcon, StatsIcon } from '../../constants/icons';
-import { HeaderProps } from '../../constants/types';
-
-import LogoutButton from '../logout-button';
 import styles from './index.module.scss';
+import { useWordleState } from '../../context';
 
-const Header = ({ setDisplayModal, setStatus, status }: HeaderProps) => {
-  const { user } = useAuth0();
-  const avatar = user?.picture;
-  const username = user?.nickname || user?.name || user?.email;
+const Header = () => {
+  const { gameStatus, setGame, setModal } = useWordleState();
 
   return (
     <header className={styles.container}>
-      <div className={styles.buttonContainer}>
-        {status !== GameStatus.ModePick && (
+      <div className={styles.left}>
+        {gameStatus !== GameStatus.Overview && (
           <>
             <button
               className={styles.back}
-              onClick={() => setStatus(GameStatus.ModePick)}>
+              onClick={() => setGame(GameStatus.Overview)}>
               <BackIcon />
             </button>
             <button
               className={styles.backDesktop}
-              onClick={() => setStatus(GameStatus.ModePick)}>
+              onClick={() => setGame(GameStatus.Overview)}>
               <BackIcon />
-              <span>BACK</span>
+              <span>QUIT</span>
             </button>
           </>
         )}
-        <button className={styles.stats} onClick={() => setDisplayModal(true)}>
-          <StatsIcon />
-        </button>
       </div>
-      <div className={styles.userContainer}>
-        {username && <span className={styles.greeting}>Hi, {username}!</span>}
-        {avatar && (
-          <img alt="User Avatar" className={styles.avatar} src={avatar} />
+      <h1>WORDLE</h1>
+      <div className={styles.right}>
+        <button
+          className={styles.rules}
+          onClick={() =>
+            setModal({ content: ModalContent.Rules, display: true })
+          }>
+          <RulesIcon />
+        </button>
+        {gameStatus !== GameStatus.Overview && (
+          <button
+            className={styles.stats}
+            onClick={() =>
+              setModal({ content: ModalContent.Stats, display: true })
+            }>
+            <StatsIcon />
+          </button>
         )}
-        <LogoutButton />
       </div>
     </header>
   );

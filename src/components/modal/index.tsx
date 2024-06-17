@@ -1,30 +1,33 @@
-import { ModalContent } from '../../constants/enums';
-import { CloseIcon } from '../../constants/icons';
-import { ModalProps } from '../../constants/types';
+import { useWordleState } from '../../context';
+import { ModalContent } from '../../lib/enums';
+import { CloseIcon } from '../../lib/icons';
 
+import Rules from '../rules';
 import Stats from '../stats';
+
 import styles from './index.module.scss';
 
-const Modal = ({
-  content = ModalContent.Stats,
-  setDisplayModal,
-}: ModalProps) => {
+const Modal = () => {
+  const { modal, setModal } = useWordleState();
+
+  if (!modal || !modal.display) return;
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.buttonContainer}>
           <button
             className={styles.close}
-            onClick={() => setDisplayModal(false)}>
+            onClick={() => setModal({ display: false })}>
             <CloseIcon />
           </button>
         </div>
-        {content === ModalContent.CreateRoom && (
+        {modal.content === ModalContent.Rules && (
           <div className={styles.formContainer}>
-            <h1>Create Room</h1>
+            <Rules />
           </div>
         )}
-        {content === ModalContent.Stats && (
+        {modal.content === ModalContent.Stats && (
           <div className={styles.statsContainer}>
             <Stats />
           </div>

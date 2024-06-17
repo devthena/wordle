@@ -1,16 +1,21 @@
 import { Bar } from 'react-chartjs-2';
-import useStats from '../../hooks/useStats';
 import styles from './index.module.scss';
+import { useWordleState } from '../../context';
 
 const Stats = () => {
-  const { getStats, getWinPercentage } = useStats();
-  const stats = getStats();
+  const { stats } = useWordleState();
+
+  if (!stats) return;
+
+  const winPercentage = !stats.totalPlayed
+    ? 'N/A'
+    : Math.round((stats.totalWon / stats.totalPlayed) * 100) + '%';
 
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
-        <h3>Solo Stats</h3>
-        <p>Win Percentage: {getWinPercentage()}</p>
+        <h3>LOCAL STATS</h3>
+        <p>Win Percentage: {winPercentage}</p>
         <p>Max Streak: {stats.maxStreak}</p>
         <p>Current Streak: {stats.currentStreak}</p>
         <p>Total Times Played: {stats.totalPlayed}</p>
