@@ -1,17 +1,18 @@
+import { useWordleState } from '../../context';
 import { GameStatus } from '../../lib/enums';
-import { LandingProps } from '../../lib/types';
 
 import Stats from '../stats';
 import styles from './index.module.scss';
 
-const Landing = ({ setStatus }: LandingProps) => {
+const Landing = () => {
+  const { setGame } = useWordleState();
+
   return (
     <div className={styles.content}>
-      <h1>Wordle</h1>
       <div className={styles.container}>
         <button
           className={styles.play}
-          onClick={() => setStatus(GameStatus.Playing)}>
+          onClick={() => setGame(GameStatus.Playing)}>
           PLAY
         </button>
         <div className={styles.stats}>

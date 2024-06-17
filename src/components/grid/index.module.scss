@@ -1,7 +1,6 @@
 .grid {
   color: var(--black);
   display: grid;
-  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 3px;
@@ -9,16 +8,12 @@
   margin: 0 auto 20px;
   width: 250px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     grid-gap: 5px;
     height: 375px;
     margin: 0 auto 40px;
     width: 320px;
   }
-}
-
-.invalid {
-  animation: shake 0.25s;
 }
 
 .letter {
@@ -30,7 +25,7 @@
   text-transform: uppercase;
   user-select: none;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     font-size: 36px;
   }
 }
@@ -41,7 +36,7 @@
   grid-gap: 3px;
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 480px) {
     grid-gap: 5px;
   }
 }
@@ -49,17 +44,29 @@
 .guessing {
   border: 1px solid var(--grey-dark);
 }
-.green {
-  background-color: var(--green);
-  color: white;
-}
-.grey {
+
+.absent {
   background-color: var(--grey);
-  color: white;
+  color: var(--white);
 }
-.yellow {
+
+.correct {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.default {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.present {
   background-color: var(--yellow);
-  color: white;
+  color: var(--white);
+}
+
+.invalid {
+  animation: shake 0.25s;
 }
 
 @keyframes shake {

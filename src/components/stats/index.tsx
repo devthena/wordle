@@ -7,11 +7,15 @@ const Stats = () => {
 
   if (!stats) return;
 
+  const winPercentage = !stats.totalPlayed
+    ? 'N/A'
+    : Math.round((stats.totalWon / stats.totalPlayed) * 100) + '%';
+
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
-        <h3>Local Stats</h3>
-        <p>Win Percentage: </p>
+        <h3>LOCAL STATS</h3>
+        <p>Win Percentage: {winPercentage}</p>
         <p>Max Streak: {stats.maxStreak}</p>
         <p>Current Streak: {stats.currentStreak}</p>
         <p>Total Times Played: {stats.totalPlayed}</p>

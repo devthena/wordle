@@ -3,9 +3,10 @@
 }
 
 .close {
-  background: transparent;
+  background: var(--white);
   border: 1px solid var(--black);
   border-radius: 5px;
+  cursor: pointer;
   padding: 2px 5px 0;
 
   & > svg {
@@ -16,17 +17,18 @@
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(248, 248, 255, 0.8);
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 3;
 }
 
 .content {
-  max-width: 480px;
-  background: white;
+  max-width: 400px;
+  background: var(--white);
   padding: 15px 15px 50px;
   border-radius: 10px;
   margin: 10% auto;

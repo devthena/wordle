@@ -1,24 +1,19 @@
-import { useState } from 'react';
-
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useEffect } from 'react';
 import { Chart, registerables } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { Footer, Header, Landing, Loading, Modal, Wordle } from './components';
-
+import { useWordleState } from './context';
 import { GameStatus } from './lib/enums';
 
 import styles from './app.module.scss';
-import { useWordleState } from './context';
 
 Chart.register(...registerables, ChartDataLabels);
 
 const App = () => {
-  const [displayModal, setDisplayModal] = useState(false);
-  const [status, setStatus] = useState(GameStatus.Overview);
+  const { gameStatus, stats, setStats } = useWordleState();
 
-  const { stats, setStats } = useWordleState();
-
-  if (!stats) {
+  useEffect(() => {
     const initialState = {
       currentStreak: 0,
       distribution: new Array(6).fill(0),
@@ -31,25 +26,19 @@ const App = () => {
 
     if (!prevStats) setStats(initialState);
     else setStats(JSON.parse(prevStats));
-  }
+  }, []);
 
   return (
     <main className={styles.app}>
-      {displayModal && <Modal setDisplayModal={setDisplayModal} />}
+      <Modal />
       <div className={styles.page}>
         {!stats && <Loading />}
         {stats && (
           <>
-            <Header
-              setDisplayModal={setDisplayModal}
-              setStatus={setStatus}
-              status={status}
-            />
+            <Header />
             <div className={styles.content}>
-              {status === GameStatus.Overview && (
-                <Landing setStatus={setStatus} />
-              )}
-              {status === GameStatus.Playing && <Wordle answer={null} />}
+              {gameStatus === GameStatus.Overview && <Landing />}
+              {gameStatus === GameStatus.Playing && <Wordle />}
             </div>
           </>
         )}

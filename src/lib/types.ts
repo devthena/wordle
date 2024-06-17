@@ -1,4 +1,4 @@
-import { GameStatus, ModalContent, WordleStatus } from './enums';
+import { KeyStatus, ModalContent, WordleStatus } from './enums';
 
 export interface WordleObject {
   currentStreak: number;
@@ -8,58 +8,24 @@ export interface WordleObject {
   totalWon: number;
 }
 
-export type AnswerGridProps = {
-  colors: GuessesObject;
-  guesses: GuessesObject;
+export interface ModalObject {
+  content?: ModalContent;
+  display: boolean;
+}
+
+export interface GameState {
+  answer: string;
+  currentGuess: string;
+  guesses: Guess[];
+  keyResults: { [letter: string]: KeyStatus };
   status: WordleStatus;
-  turn: number;
-};
+}
 
-export type ColorObject = {
-  [key: string]: string;
-};
-
-export type FooterProps = {
-  version: string;
-};
+export interface Guess {
+  word: string;
+  result: Array<KeyStatus>;
+}
 
 export type GuessesObject = {
   [key: number]: string[];
-};
-
-export type HeaderProps = {
-  setDisplayModal: Function;
-  setStatus: Function;
-  status: GameStatus;
-};
-
-export type KeyboardProps = {
-  colors: ColorObject;
-  keys: string[][];
-  onKeyUp: Function;
-};
-
-export type KeyTileProps = {
-  id: string;
-};
-
-export type LandingProps = {
-  setStatus: Function;
-};
-
-export type ModalProps = {
-  content?: ModalContent;
-  setDisplayModal: Function;
-};
-
-export type StatsObject = {
-  currentStreak: number;
-  distribution: number[];
-  maxStreak: number;
-  totalPlayed: number;
-  totalWon: number;
-};
-
-export type WordleProps = {
-  answer: string | null;
 };

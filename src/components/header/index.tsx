@@ -1,31 +1,49 @@
-import { GameStatus } from '../../lib/enums';
-import { BackIcon, StatsIcon } from '../../lib/icons';
-import { HeaderProps } from '../../lib/types';
+import { GameStatus, ModalContent } from '../../lib/enums';
+import { BackIcon, RulesIcon, StatsIcon } from '../../lib/icons';
 
 import styles from './index.module.scss';
+import { useWordleState } from '../../context';
 
-const Header = ({ setDisplayModal, setStatus, status }: HeaderProps) => {
+const Header = () => {
+  const { gameStatus, setGame, setModal } = useWordleState();
+
   return (
     <header className={styles.container}>
-      <div className={styles.buttonContainer}>
-        {status !== GameStatus.Overview && (
+      <div className={styles.left}>
+        {gameStatus !== GameStatus.Overview && (
           <>
             <button
               className={styles.back}
-              onClick={() => setStatus(GameStatus.Overview)}>
+              onClick={() => setGame(GameStatus.Overview)}>
               <BackIcon />
             </button>
             <button
               className={styles.backDesktop}
-              onClick={() => setStatus(GameStatus.Overview)}>
+              onClick={() => setGame(GameStatus.Overview)}>
               <BackIcon />
               <span>QUIT</span>
             </button>
           </>
         )}
-        <button className={styles.stats} onClick={() => setDisplayModal(true)}>
-          <StatsIcon />
+      </div>
+      <h1>WORDLE</h1>
+      <div className={styles.right}>
+        <button
+          className={styles.rules}
+          onClick={() =>
+            setModal({ content: ModalContent.Rules, display: true })
+          }>
+          <RulesIcon />
         </button>
+        {gameStatus !== GameStatus.Overview && (
+          <button
+            className={styles.stats}
+            onClick={() =>
+              setModal({ content: ModalContent.Stats, display: true })
+            }>
+            <StatsIcon />
+          </button>
+        )}
       </div>
     </header>
   );
