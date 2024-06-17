@@ -1,62 +1,60 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart, registerables } from 'chart.js';
 
-import {
-  Footer,
-  Header,
-  Landing,
-  Loading,
-  LoginButton,
-  Modal,
-  Wordle,
-} from './components';
+import { Footer, Header, Landing, Loading, Modal, Wordle } from './components';
 
-import { GameStatus } from './constants/enums';
-import { AppProps } from './constants/types';
+import { GameStatus } from './lib/enums';
 
 import styles from './app.module.scss';
+import { useWordleState } from './context';
 
 Chart.register(...registerables, ChartDataLabels);
 
-const App = ({ version }: AppProps) => {
-  const { isAuthenticated, isLoading } = useAuth0();
+const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
-  const [status, setStatus] = useState(GameStatus.ModePick);
+  const [status, setStatus] = useState(GameStatus.Overview);
+
+  const { stats, setStats } = useWordleState();
+
+  if (!stats) {
+    const initialState = {
+      currentStreak: 0,
+      distribution: new Array(6).fill(0),
+      maxStreak: 0,
+      totalPlayed: 0,
+      totalWon: 0,
+    };
+
+    const prevStats = localStorage.getItem('react-wordle-devthena');
+
+    if (!prevStats) setStats(initialState);
+    else setStats(JSON.parse(prevStats));
+  }
 
   return (
     <main className={styles.app}>
       {displayModal && <Modal setDisplayModal={setDisplayModal} />}
       <div className={styles.page}>
-        {isLoading && <Loading />}
-        {!isAuthenticated && !isLoading && (
-          <div className={styles.auth}>
-            <div className={styles.container}>
-              <h1 className={styles.title}>Wordle</h1>
-              <p>Play Solo or Co-op!</p>
-            </div>
-            <LoginButton />
-          </div>
-        )}
-        {isAuthenticated && !isLoading && (
-          <div>
+        {!stats && <Loading />}
+        {stats && (
+          <>
             <Header
               setDisplayModal={setDisplayModal}
               setStatus={setStatus}
               status={status}
             />
             <div className={styles.content}>
-              {status === GameStatus.ModePick && (
+              {status === GameStatus.Overview && (
                 <Landing setStatus={setStatus} />
               )}
-              {status === GameStatus.SoloStart && <Wordle answer={null} />}
+              {status === GameStatus.Playing && <Wordle answer={null} />}
             </div>
-          </div>
+          </>
         )}
       </div>
-      <Footer version={version} />
+      <Footer version="1.0.0" />
     </main>
   );
 };

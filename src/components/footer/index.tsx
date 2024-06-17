@@ -1,4 +1,4 @@
-import { FooterProps } from '../../constants/types';
+import { FooterProps } from '../../lib/types';
 import styles from './index.module.scss';
 
 const Footer = ({ version }: FooterProps) => {

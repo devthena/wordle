@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
-import { WordleStatus } from '../../constants/enums';
-import { WordleProps } from '../../constants/types';
-
-import useWordle from '../../hooks/useWordle';
+import { WordleStatus } from '../../lib/enums';
+import { WordleProps } from '../../lib/types';
 
 import AnswerGrid from '../grid';
 import Keyboard from '../keyboard';
@@ -11,29 +9,29 @@ import Keyboard from '../keyboard';
 import styles from './index.module.scss';
 
 const Wordle = ({ answer }: WordleProps) => {
-  const {
-    guessColors,
-    guesses,
-    handleKeyUp,
-    keyColors,
-    keyIds,
-    turn,
-    word,
-    wordleStatus,
-  } = useWordle(answer);
+  const handleKeyPress = useCallback((event: KeyboardEvent) => {
+    const { key } = event;
+    console.log(key);
+    // if (key === 'Enter') {
+    //   onEnter();
+    // } else if (key === 'Backspace') {
+    //   onDelete();
+    // } else if (/^[a-zA-Z]$/.test(key)) {
+    //   onKey(key.toLowerCase());
+    // }
+  }, []);
 
   useEffect(() => {
-    const keyUpHandler = (evt: KeyboardEvent) => {
-      handleKeyUp(evt.key);
+    window.addEventListener('keydown', handleKeyPress);
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
     };
-    window.addEventListener('keyup', keyUpHandler, true);
-    return window.removeEventListener('keyup', keyUpHandler);
   }, []);
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Wordle</h1>
-      <div className={styles.noteWrapper}>
+      {/* <div className={styles.noteWrapper}>
         {wordleStatus === WordleStatus.Answered && (
           <p className={styles.note}>Good job! Press "Enter" to play again.</p>
         )}
@@ -53,15 +51,15 @@ const Wordle = ({ answer }: WordleProps) => {
             Not in word list
           </p>
         )}
-      </div>
+      </div> */}
 
-      <AnswerGrid
+      {/* <AnswerGrid
         colors={guessColors}
         guesses={guesses}
         status={wordleStatus}
         turn={turn}
       />
-      <Keyboard colors={keyColors} keys={keyIds} onKeyUp={handleKeyUp} />
+      <Keyboard colors={keyColors} keys={keyIds} onKeyUp={handleKeyUp} /> */}
     </div>
   );
 };

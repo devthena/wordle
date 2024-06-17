@@ -1,7 +1,11 @@
 import styles from './index.module.scss';
 
 const Loading = () => {
-  return <p className={styles.loading}>Loading...</p>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.dualRing}></div>
+    </div>
+  );
 };
 
 export default Loading;

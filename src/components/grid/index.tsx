@@ -1,5 +1,5 @@
-import { WordleStatus } from '../../constants/enums';
-import { AnswerGridProps } from '../../constants/types';
+import { WordleStatus } from '../../lib/enums';
+import { AnswerGridProps } from '../../lib/types';
 
 import styles from './index.module.scss';
 

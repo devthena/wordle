@@ -1,16 +1,17 @@
 import { Bar } from 'react-chartjs-2';
-import useStats from '../../hooks/useStats';
 import styles from './index.module.scss';
+import { useWordleState } from '../../context';
 
 const Stats = () => {
-  const { getStats, getWinPercentage } = useStats();
-  const stats = getStats();
+  const { stats } = useWordleState();
+
+  if (!stats) return;
 
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
-        <h3>Solo Stats</h3>
-        <p>Win Percentage: {getWinPercentage()}</p>
+        <h3>Local Stats</h3>
+        <p>Win Percentage: </p>
         <p>Max Streak: {stats.maxStreak}</p>
         <p>Current Streak: {stats.currentStreak}</p>
         <p>Total Times Played: {stats.totalPlayed}</p>

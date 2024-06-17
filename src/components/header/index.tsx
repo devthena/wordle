@@ -1,45 +1,31 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { GameStatus } from '../../lib/enums';
+import { BackIcon, StatsIcon } from '../../lib/icons';
+import { HeaderProps } from '../../lib/types';
 
-import { GameStatus } from '../../constants/enums';
-import { BackIcon, StatsIcon } from '../../constants/icons';
-import { HeaderProps } from '../../constants/types';
-
-import LogoutButton from '../logout-button';
 import styles from './index.module.scss';
 
 const Header = ({ setDisplayModal, setStatus, status }: HeaderProps) => {
-  const { user } = useAuth0();
-  const avatar = user?.picture;
-  const username = user?.nickname || user?.name || user?.email;
-
   return (
     <header className={styles.container}>
       <div className={styles.buttonContainer}>
-        {status !== GameStatus.ModePick && (
+        {status !== GameStatus.Overview && (
           <>
             <button
               className={styles.back}
-              onClick={() => setStatus(GameStatus.ModePick)}>
+              onClick={() => setStatus(GameStatus.Overview)}>
               <BackIcon />
             </button>
             <button
               className={styles.backDesktop}
-              onClick={() => setStatus(GameStatus.ModePick)}>
+              onClick={() => setStatus(GameStatus.Overview)}>
               <BackIcon />
-              <span>BACK</span>
+              <span>QUIT</span>
             </button>
           </>
         )}
         <button className={styles.stats} onClick={() => setDisplayModal(true)}>
           <StatsIcon />
         </button>
-      </div>
-      <div className={styles.userContainer}>
-        {username && <span className={styles.greeting}>Hi, {username}!</span>}
-        {avatar && (
-          <img alt="User Avatar" className={styles.avatar} src={avatar} />
-        )}
-        <LogoutButton />
       </div>
     </header>
   );

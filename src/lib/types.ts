@@ -1,14 +1,18 @@
 import { GameStatus, ModalContent, WordleStatus } from './enums';
 
+export interface WordleObject {
+  currentStreak: number;
+  distribution: number[];
+  maxStreak: number;
+  totalPlayed: number;
+  totalWon: number;
+}
+
 export type AnswerGridProps = {
   colors: GuessesObject;
   guesses: GuessesObject;
   status: WordleStatus;
   turn: number;
-};
-
-export type AppProps = {
-  version: string;
 };
 
 export type ColorObject = {

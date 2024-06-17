@@ -1,15 +1,10 @@
 export const enum GameStatus {
-  ModePick,
-  Create,
-  Room,
-  SoloStart,
-  SoloEnd,
-  CoopStart,
-  CoopEnd,
+  Overview,
+  Playing,
 }
 
 export const enum ModalContent {
-  CreateRoom,
+  Rules,
   Stats,
 }
 

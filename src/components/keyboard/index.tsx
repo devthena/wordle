@@ -1,5 +1,5 @@
-import { BackspaceIcon } from '../../constants/icons';
-import { KeyboardProps, KeyTileProps } from '../../constants/types';
+import { BackspaceIcon } from '../../lib/icons';
+import { KeyboardProps, KeyTileProps } from '../../lib/types';
 
 import styles from './index.module.scss';
 
