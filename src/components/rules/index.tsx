@@ -13,11 +13,11 @@ const Rules = () => {
             correct spot
           </li>
           <li>
-            <span className={styles.yellow}>YELLOW</span> is for letters the
+            <span className={styles.yellow}>YELLOW</span> is for letters in the
             wrong spot
           </li>
           <li>
-            <span className={styles.grey}>GREY</span> is for letters that don't
+            <span className={styles.grey}>GREY</span> is for letters that do not
             exist
           </li>
         </ul>
