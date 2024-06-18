@@ -29,14 +29,14 @@ const Notice = ({ answer, currentGuess, status, onResume }: NoticeProps) => {
       )}
       {status === WordleStatus.InvalidGuess && (
         <p className={`${styles.note} ${styles.noteFade}`}>
-          <span className={styles.answer}>{currentGuess}</span> does not have
-          enough letters.
+          <span className={styles.answer}>{currentGuess}</span>
+          <span>does not have enough letters.</span>
         </p>
       )}
       {status === WordleStatus.InvalidWord && (
         <p className={`${styles.note} ${styles.noteFade}`}>
-          <span className={styles.answer}>{currentGuess}</span> is not in the
-          dictionary.
+          <span className={styles.answer}>{currentGuess}</span>
+          <span>is not in the dictionary.</span>
         </p>
       )}
     </div>
