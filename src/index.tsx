@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { Analytics } from '@vercel/analytics/react';
 
 import App from './app';
 import './index.scss';
@@ -11,5 +12,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <WordleProvider>
     <App />
+    <Analytics />
   </WordleProvider>
 );

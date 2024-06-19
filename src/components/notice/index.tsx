@@ -13,7 +13,7 @@ const Notice = ({ answer, currentGuess, status, onResume }: NoticeProps) => {
     status === WordleStatus.InvalidGuess ||
     status === WordleStatus.InvalidWord
   ) {
-    setTimeout(onResume, 2250);
+    setTimeout(onResume, 2000);
   }
 
   return (
