@@ -14,7 +14,7 @@ const Stats = () => {
   return (
     <div className={styles.container}>
       <div className={styles.stats}>
-        <h3>LOCAL STATS</h3>
+        <h3>STATS</h3>
         <p>Win Percentage: {winPercentage}</p>
         <p>Max Streak: {stats.maxStreak}</p>
         <p>Current Streak: {stats.currentStreak}</p>
