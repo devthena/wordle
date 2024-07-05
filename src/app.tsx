@@ -43,7 +43,7 @@ const App = () => {
           </>
         )}
       </div>
-      <Footer version="1.3.1" />
+      <Footer version="1.3.2" />
     </main>
   );
 };
