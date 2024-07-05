@@ -34,7 +34,12 @@ const getLetterResult = (
       answerArray[i] = '';
       guessArray[i] = '';
     } else {
-      keyResults[guessArray[i]] = KeyStatus.Absent;
+      if (
+        keyResults[guessArray[i]] !== KeyStatus.Correct &&
+        keyResults[guessArray[i]] !== KeyStatus.Present
+      ) {
+        keyResults[guessArray[i]] = KeyStatus.Absent;
+      }
     }
   }
 
@@ -44,8 +49,11 @@ const getLetterResult = (
       const letterIndex = answerArray.indexOf(guessArray[i]);
 
       result[i] = KeyStatus.Present;
-      keyResults[guessArray[i]] = KeyStatus.Present;
       answerArray[letterIndex] = '';
+
+      if (keyResults[guessArray[i]] !== KeyStatus.Correct) {
+        keyResults[guessArray[i]] = KeyStatus.Present;
+      }
     }
   }
 
