@@ -25,6 +25,7 @@ const Wordle = () => {
     onDelete,
     onEnter,
     onKey,
+    onReset,
     onResume,
   } = useWordle();
 
@@ -43,6 +44,9 @@ const Wordle = () => {
   );
 
   useEffect(() => {
+    // generate a new answer for wordle
+    onReset();
+
     window.addEventListener('keydown', handleKeyPress);
     return () => {
       window.removeEventListener('keydown', handleKeyPress);

@@ -151,7 +151,7 @@ const generateAnswer = () => {
 };
 
 const initialState: GameState = {
-  answer: generateAnswer(),
+  answer: '',
   currentGuess: '',
   guesses: [],
   keyResults: {},

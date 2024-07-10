@@ -1,9 +1,9 @@
 import styles from './index.module.scss';
 
-const Footer = ({ version }: { version: string }) => {
+const Footer = () => {
   return (
     <footer className={styles.container}>
-      <p>Made with ♡ by Athena | Build v{version}</p>
+      <p>made with ♡ by devthena</p>
     </footer>
   );
 };
