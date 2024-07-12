@@ -6115,6 +6115,7 @@ export const WordList = [
   'laevo',
   'lagan',
   'lager',
+  'laggy',
   'lahal',
   'lahar',
   'laich',
