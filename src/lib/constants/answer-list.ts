@@ -1,4 +1,4 @@
-export const ANSWER_LIST = [
+export const AnswerList = [
   'aback',
   'abbey',
   'abbot',
